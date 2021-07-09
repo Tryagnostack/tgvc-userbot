@@ -15,8 +15,8 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-!ping reply with pong
-!uptime check uptime
+~ping reply with pong
+~uptime check uptime
 """
 from datetime import datetime
 from time import time
@@ -57,7 +57,7 @@ async def _human_time_duration(seconds):
                    & self_or_contact_filter
                    & ~filters.edited
                    & ~filters.via_bot
-                   & filters.regex("^!ping$"))
+                   & filters.regex("^~ping$"))
 async def ping_pong(_, m: Message):
     """Reply ping with pong and delete both messages"""
     start = time()
@@ -72,7 +72,7 @@ async def ping_pong(_, m: Message):
                    & self_or_contact_filter
                    & ~filters.edited
                    & ~filters.via_bot
-                   & filters.regex("^!uptime$"))
+                   & filters.regex("^~uptime$"))
 async def get_uptime(_, m: Message):
     """/uptime Reply with readable uptime and ISO 8601 start time"""
     current_time = datetime.utcnow()
