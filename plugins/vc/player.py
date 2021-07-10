@@ -532,13 +532,11 @@ async def _delay_delete_messages(messages: tuple, delay: int):
                    & filters.regex(REGEX_SITES)
                    & ~filters.regex(REGEX_EXCLUDE_URL))
 async def music_downloader(client: Client, message: Message):
-    print('got yt from user')
     await _fetch_and_send_music(client, message)
 
 
 async def _fetch_and_send_music(client: Client, message: Message):
     # await message.reply_chat_action("typing")
-    print('entered fetch and send')
     processing = await message.reply_text("Processing Youtube video...")
     try:
         ydl_opts = {
@@ -547,9 +545,7 @@ async def _fetch_and_send_music(client: Client, message: Message):
             'writethumbnail': True
         }
         ydl = YoutubeDL(ydl_opts)
-        print('ydl = ...')
         info_dict = ydl.extract_info(message.text, download=False)
-        print('info dict')
         if info_dict['duration'] > MUSIC_MAX_LENGTH:
             readable_max_length = str(timedelta(seconds=MUSIC_MAX_LENGTH))
             inform = ("This won't be downloaded because its audio length is "
