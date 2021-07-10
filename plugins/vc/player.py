@@ -615,7 +615,8 @@ async def _upload_audio(client: Client, message: Message, info_dict, audio_file)
     caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
     duration = int(float(info_dict['duration']))
     performer = info_dict['uploader']
-    res = await client.send_audio(chat_id=-1001562506578,
+    chat_id_num = int("-100" + str(group_call.full_chat.id))
+    res = await client.send_audio(chat_id=chat_id_num,
                                     audio=audio_file,
                                     caption=caption,
                                     duration=duration,
