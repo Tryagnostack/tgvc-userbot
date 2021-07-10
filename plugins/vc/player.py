@@ -112,7 +112,6 @@ async def current_vc_filter(_, __, m: Message):
     if not group_call.is_connected:
         return False
     chat_id = int("-100" + str(group_call.full_chat.id))
-    print(chat_id)
     if m.chat.id == chat_id:
         return True
     return False
